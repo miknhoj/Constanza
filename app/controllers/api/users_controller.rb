@@ -5,13 +5,13 @@ class Api::UsersController < ApplicationController
     render json: @users
   end
 
-  def create
-    @user = User.create!(user_params)
+  def show
+    @user = User.find(params[:id])
     render json: @user
   end
 
-  def show
-    @user = [User.find(params[:id]), User.find(params[:id]).posts.order("created_at DESC")]
+  def create
+    @user = User.create!(user_params)
     render json: @user
   end
 
@@ -28,7 +28,7 @@ class Api::UsersController < ApplicationController
 
 private
   def user_params 
-    params.require(:user).permit(:name, :current_city, :image_url)
+    params.require(:user).permit(:username, :first_name, :last_name, :hometown)
   end
-  
+
 end
