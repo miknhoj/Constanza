@@ -17,6 +17,6 @@ br2 = Bathroom.create(location_name: "Ponce City Market: West Wing", street: "67
 br3 = Bathroom.create(location_name: "QuikTrip", street: "855 Peachtree St NE", city: "Atlanta", state: "GA", zip: "30308", baby_changing: false, toilets: 2, sinks: 1)
 
 rating_1 = Rating.create(rating: 5, cleaniness: 4, privacy_level: 4, comment: "Very clean, but does get a lot of traffic", user_id: john.id, bathroom_id: br1.id)
-rating_2 = Rating.create(rating: 4, cleaniness: 4, privacy_level: 3, comment: "Very clean, but does get a lot of traffic", user_id: bob.id, bathroom_id: br1.id)
-rating_3 = Rating.create(rating: 4, cleaniness: 4, privacy_level: 3, comment: "Very clean, but does get a lot of traffic", user_id: john.id, bathroom_id: br2.id)
-rating_4 = Rating.create(rating: 1, cleaniness: 1, privacy_level: 4, comment: "Very clean, but does get a lot of traffic", user_id: john.id, bathroom_id: br3.id)
+rating_2 = Rating.create(rating: 4, cleaniness: 4, privacy_level: 3, comment: "Nice, fancy, well stocked, but quite busy", user_id: bob.id, bathroom_id: br1.id)
+rating_3 = Rating.create(rating: 4, cleaniness: 4, privacy_level: 3, comment: "Large, a lot of stalls, but gets a lot of thru traffic.", user_id: john.id, bathroom_id: br2.id)
+rating_4 = Rating.create(rating: 1, cleaniness: 1, privacy_level: 4, comment: "Disgusting!", user_id: john.id, bathroom_id: br3.id)
