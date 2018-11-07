@@ -10,7 +10,13 @@ User.destroy_all
 Bathroom.destroy_all
 
 john = User.create(username: "miknhoj", first_name: "John", last_name: "Kim", hometown: "Atlanta")
+bob = User.create(username: "bobby", first_name: "Bob", last_name: "Vance", hometown: "Scranton")
 
-br1 = Bathroom.create(street: "", city: "", state: "", zip: "", baby_changing: true, toilets: 3, sinks: 4)
+br1 = Bathroom.create(location_name: "Ponce City Market: East Wing", street: "675 Ponce De Leon Ave Ne", city: "Atlanta", state: "GA", zip: "30308", baby_changing: true, toilets: 3, sinks: 4)
+br2 = Bathroom.create(location_name: "Ponce City Market: West Wing", street: "675 Ponce De Leon Ave Ne", city: "Atlanta", state: "GA", zip: "30308", baby_changing: true, toilets: 6, sinks: 6)
+br3 = Bathroom.create(location_name: "QuikTrip", street: "855 Peachtree St NE", city: "Atlanta", state: "GA", zip: "30308", baby_changing: false, toilets: 2, sinks: 1)
 
-br1_rating = Rating.create(rating: 5, cleaniness: 4, privacy_level: 4, comment: "Very clean, but does get a lot of traffic", user_id: john.id, bathroom_id: br1.id)
+rating_1 = Rating.create(rating: 5, cleaniness: 4, privacy_level: 4, comment: "Very clean, but does get a lot of traffic", user_id: john.id, bathroom_id: br1.id)
+rating_2 = Rating.create(rating: 4, cleaniness: 4, privacy_level: 3, comment: "Very clean, but does get a lot of traffic", user_id: bob.id, bathroom_id: br1.id)
+rating_3 = Rating.create(rating: 4, cleaniness: 4, privacy_level: 3, comment: "Very clean, but does get a lot of traffic", user_id: john.id, bathroom_id: br2.id)
+rating_4 = Rating.create(rating: 1, cleaniness: 1, privacy_level: 4, comment: "Very clean, but does get a lot of traffic", user_id: john.id, bathroom_id: br3.id)
