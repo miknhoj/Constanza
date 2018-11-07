@@ -15,9 +15,17 @@ class Api::BathroomsController < ApplicationController
   end
 
   def update
-    
+    @bathroom = Bathroom.find(params[:id])
+    @bathroom.update!(bathroom_params)
+    render json: @bathroom
   end
 
+  def destroy
+    @bathroom = Bathroom.find(params[:id])
+    @bathroom.destroy
+    render status: 200
+  end
+  
 
 private
   def bathroom_params
