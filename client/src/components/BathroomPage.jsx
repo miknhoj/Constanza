@@ -8,6 +8,7 @@ export default class BathroomPage extends Component {
       location_name: '',
       street: '',
       city: '',
+      state: '',
       zip: '',
       baby_changing: false,
       sinks: '',
@@ -19,19 +20,27 @@ export default class BathroomPage extends Component {
     const response = await axios.get(`/api/bathrooms/${this.props.match.params.bathroomId}`)
     console.log(response)
     return response.data
+  }
 
+  aggregateState = (response) => {
+    this.setState({bathroom: response, ratings: response})
   }
 
   componentDidMount = async () => {
     const response = await this.getBathroom()
-    this.setState(response)
+    this.aggregateState(response)
   }
 
 
   render() {
+    const bathroom = this.state.bathroom
     return (
       <div>
         Restroom Page
+        <h1>{bathroom.location_name}</h1>
+        <p>{bathroom.street}<br></br>{bathroom.city}, {bathroom.state} {bathroom.zip}</p>
+        
+
 
 
       </div>
