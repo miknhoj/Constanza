@@ -54,7 +54,7 @@ export default class BathroomPage extends Component {
           Sinks: {bathroom.sinks}
         </div>
         <Link to={`/bathrooms/${this.props.match.params.bathroomId}/ratings/new`}><button>Rate</button></Link>
-      <RatingsList ratings={this.state.ratings} users={this.state.users} />
+      <RatingsList ratings={this.state.ratings} users={this.state.users} getBathroom={this.getBathroom}/>
 
 
       </div>

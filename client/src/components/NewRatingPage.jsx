@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
+import styled from 'styled-components'
 
 export default class NewRatingPage extends Component {
   state = {
@@ -57,24 +58,24 @@ export default class NewRatingPage extends Component {
         <form onSubmit={this.handleSubmit} >
           <h1>New rating for {this.state.bathroom.location_name}</h1>
           <p>Rating</p>
-          <input placeholder='Rating'
-            type='integer'
+          <StyledInput placeholder='1-5'
+            type="number" min="1" max="5"
             name='rating'
             value={this.state.newRating.rating}
             onChange={this.handleChange}
           />
 
           <p>Cleaniness</p>
-          <input placeholder='Post Image Adress'
-            type='integer'
+          <StyledInput placeholder='1-5'
+            type="number" min="1" max="5"
             name='cleaniness'
             value={this.state.newRating.cleaniness}
             onChange={this.handleChange}
           />
 
           <p>Privacy Level</p>
-          <input placeholder='Post Image Adress'
-            type='integer'
+          <StyledInput placeholder='1-5'
+            type="number" min="1" max="5"
             name='cleaniness'
             value={this.state.newRating.cleaniness}
             onChange={this.handleChange}
@@ -96,3 +97,7 @@ export default class NewRatingPage extends Component {
     )
   }
 }
+
+const StyledInput= styled.input`
+width: 50px;
+`
