@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import RatingsList from './shared_components/RatingsList';
+import {Link} from 'react-router-dom'
 
 
 export default class BathroomPage extends Component {
@@ -14,23 +15,27 @@ export default class BathroomPage extends Component {
       baby_changing: '',
       sinks: '',
     },
-    user: {},
     ratings: []
   }
 
   getBathroom = async () => {
     const response = await axios.get(`/api/bathrooms/${this.props.match.params.bathroomId}`)
-    console.log(response)
     return response.data
   }
 
-  aggregateState = (response) => {
-    this.setState({ bathroom: response[0], ratings: response[1], users: response[2] })
+  getUsers = async () => {
+    const users = await axios.get(`/api/users`)
+    return users.data
+  }
+
+  aggregateState = (response, users) => {
+    this.setState({ bathroom: response[0], ratings: response[1], users: users})
   }
 
   componentDidMount = async () => {
     const response = await this.getBathroom()
-    this.aggregateState(response)
+    const users = await this.getUsers()
+    this.aggregateState(response, users)
   }
 
 
@@ -40,6 +45,7 @@ export default class BathroomPage extends Component {
       <div>
         Restroom Page
         <h1>{bathroom.location_name}</h1>
+
         <h3>{bathroom.street}<br></br>{bathroom.city}, {bathroom.state} {bathroom.zip}</h3>
         <div>
           Baby Changing Station: {bathroom.baby_changing}
@@ -47,7 +53,8 @@ export default class BathroomPage extends Component {
         <div>
           Sinks: {bathroom.sinks}
         </div>
-      <RatingsList ratings={this.state.ratings} />
+        <Link to={`/bathrooms/${this.props.match.params.bathroomId}/ratings/new`}><button>Rate</button></Link>
+      <RatingsList ratings={this.state.ratings} users={this.state.users} />
 
 
       </div>
