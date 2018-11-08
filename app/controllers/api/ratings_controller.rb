@@ -30,7 +30,7 @@ class Api::RatingsController < ApplicationController
 private
 
   def rating_params
-    params.require(:rating).permit(:rating, :cleaniness, :privacy_level, :comment, :user_id, :bathroom_id)
+    params.require(:form_data).permit(:rating, :cleaniness, :privacy_level, :comment)
   end
 
 end

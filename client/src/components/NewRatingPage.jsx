@@ -27,9 +27,9 @@ export default class NewRatingPage extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault()
-    await axios.post(`/api/bathrooms/${this.props.match.params.bathroomId}/ratings`, this.state.newRating)
+    await axios.post(`/api/bathrooms/${this.props.match.params.bathroomId}/ratings`, {"form_data": this.state.newRating})
     this.setState({
-      newRating: {
+      rating: {
         rating: '',
         cleaniness: '',
         privacy_level: '',

@@ -7,8 +7,6 @@ export default class LandingPage extends Component {
     return (
       <div>
         <Header/>
-        Landing Page!
-        <img src='https://www.redfin.com/blog/wp-content/uploads/sites/5/2013/08/I285-Atlanta.jpg' alt='sample'/>
         <BathroomList/>
       </div>
     )
