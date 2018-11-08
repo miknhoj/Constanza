@@ -5,13 +5,13 @@ import axios from 'axios'
 export default class BathroomPage extends Component {
   state = {
     bathroom: {
-      location_name: '',
-      street: '',
-      city: '',
-      state: '',
-      zip: '',
-      baby_changing: false,
-      sinks: '',
+      // location_name: '',
+      // street: '',
+      // city: '',
+      // state: '',
+      // zip: '',
+      // baby_changing: '',
+      // sinks: '',
     },
     ratings: []
   }
@@ -38,8 +38,11 @@ export default class BathroomPage extends Component {
       <div>
         Restroom Page
         <h1>{bathroom.location_name}</h1>
-        <p>{bathroom.street}<br></br>{bathroom.city}, {bathroom.state} {bathroom.zip}</p>
-        
+        <h3>{bathroom.street}<br></br>{bathroom.city}, {bathroom.state} {bathroom.zip}</h3>
+        <div>
+          Baby Changing Station: {bathroom.baby_changing}
+          Sinks: {bathroom.sinks}
+        </div>
 
 
 

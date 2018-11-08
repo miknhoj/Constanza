@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_07_164352) do
+ActiveRecord::Schema.define(version: 2018_11_08_160846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2018_11_07_164352) do
     t.string "city"
     t.string "state"
     t.integer "zip"
-    t.boolean "baby_changing"
+    t.string "baby_changing"
     t.integer "toilets"
     t.integer "sinks"
     t.datetime "created_at", null: false
