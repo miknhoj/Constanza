@@ -5,7 +5,7 @@ class Api::BathroomsController < ApplicationController
   end
 
   def show
-    @bathroom = Bathroom.find(params[:id])
+    @bathroom =[ Bathroom.find(params[:id]), Bathroom.find(params[:id]).ratings ]
     render json: @bathroom
   end
 

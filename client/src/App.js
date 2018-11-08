@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import LandingPage from './components/LandingPage';
 import BathroomPage from './components/BathroomPage';
+import RatingsList from './components/shared_components/RatingsList';
 
 class App extends Component {
   render() {
@@ -10,6 +11,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={LandingPage} />
           <Route exact path='/bathrooms/:bathroomId' component={BathroomPage} />
+          <Route exact path='/bathrooms/:bathroomId/ratings' component={RatingsList} />
         </Switch>
       </Router>
     );
