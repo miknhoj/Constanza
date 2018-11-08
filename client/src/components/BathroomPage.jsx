@@ -28,14 +28,14 @@ export default class BathroomPage extends Component {
     return users.data
   }
 
-  aggregateState = (response, users) => {
+  aggregateState = async () => {
+    const response = await this.getBathroom()
+    const users = await this.getUsers()
     this.setState({ bathroom: response[0], ratings: response[1], users: users})
   }
 
   componentDidMount = async () => {
-    const response = await this.getBathroom()
-    const users = await this.getUsers()
-    this.aggregateState(response, users)
+    this.aggregateState()
   }
 
 
@@ -54,7 +54,7 @@ export default class BathroomPage extends Component {
           Sinks: {bathroom.sinks}
         </div>
         <Link to={`/bathrooms/${this.props.match.params.bathroomId}/ratings/new`}><button>Rate</button></Link>
-      <RatingsList ratings={this.state.ratings} users={this.state.users} getBathroom={this.getBathroom}/>
+      <RatingsList ratings={this.state.ratings} users={this.state.users} aggregateState={this.aggregateState}/>
 
 
       </div>

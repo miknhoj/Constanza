@@ -47,7 +47,6 @@ export default class NewRatingPage extends Component {
     this.setState({ newRating })
   }
 
-
   render() {
     if (this.state.redirect) {
       return <Redirect to={`/bathrooms/${this.props.match.params.bathroomId}`} />
@@ -76,8 +75,8 @@ export default class NewRatingPage extends Component {
           <p>Privacy Level</p>
           <StyledInput placeholder='1-5'
             type="number" min="1" max="5"
-            name='cleaniness'
-            value={this.state.newRating.cleaniness}
+            name='privacy_level'
+            value={this.state.newRating.privacy_level}
             onChange={this.handleChange}
           />
 
