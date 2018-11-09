@@ -1,16 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import { Link } from 'react-router-dom'
 
 export default class Rating extends Component {
-  // state = {
-  //   bathroom: {}
-  // }
-
-  // getBathroom = async () => {
-  //   const response = await axios.get(`/api/bathrooms/${this.props.rating.bathroom_id}`)
-  //   console.log(response)
-  //   this.setState({bathroom: response})
-  // }
 
   handleDelete = async () => {
     await axios.delete(`/api/bathrooms/${this.props.rating.bathroom_id}/ratings/${this.props.rating.id}`)
@@ -27,7 +19,7 @@ export default class Rating extends Component {
           <div>Cleaniness: {rating.cleaniness}</div>
           <div>Privacy Level: {rating.privacy_level}</div>
           <div>Comment: {rating.comment}</div>
-          <button>Edit</button>
+          <Link to={`/bathrooms/${this.props.rating.bathroom_id}/ratings/${this.props.rating.id}/edit`}><button>Edit</button></Link>
           <button onClick={this.handleDelete}>Remove</button>
         </div>
       </div>
