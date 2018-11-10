@@ -10,7 +10,6 @@ export default class BathroomList extends Component {
 
   getBathroom = async () => {
     const response = await axios.get(`/api/bathrooms`)
-    console.log(response)
     return response.data
   }
 

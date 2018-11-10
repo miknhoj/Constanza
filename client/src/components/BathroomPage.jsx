@@ -43,7 +43,7 @@ export default class BathroomPage extends Component {
     const bathroom = this.state.bathroom
     return (
       <div>
-        Restroom Page
+        Bathroom Page
         <h1>{bathroom.location_name}</h1>
 
         <h3>{bathroom.street}<br></br>{bathroom.city}, {bathroom.state} {bathroom.zip}</h3>
