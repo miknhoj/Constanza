@@ -1,4 +1,5 @@
 class Api::BathroomsController < ApplicationController
+
   def index
     @bathrooms = Bathroom.all
     render json: @bathrooms
@@ -6,7 +7,8 @@ class Api::BathroomsController < ApplicationController
 
   def show
     @bathroom =[ Bathroom.find(params[:id]), Bathroom.find(params[:id]).ratings ]
-    render json: @bathroom
+    render json: @bathroom 
+
   end
 
   def create
