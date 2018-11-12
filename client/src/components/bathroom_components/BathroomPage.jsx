@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import RatingsList from './shared_components/RatingsList';
+import RatingsList from '../shared_components/RatingsList';
 import {Link} from 'react-router-dom'
 
 
@@ -44,7 +44,7 @@ export default class BathroomPage extends Component {
     return (
       <div>
         Bathroom Page
-        <h1>{bathroom.location_name}</h1>
+        <h1>{bathroom.location_name} </h1>
 
         <h3>{bathroom.street}<br></br>{bathroom.city}, {bathroom.state} {bathroom.zip}</h3>
         <div>

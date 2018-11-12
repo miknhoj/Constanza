@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import styled from 'styled-components'
+// import styled from 'styled-components'
 
 export default class BathroomList extends Component {
-  state= {
+  state = {
     bathrooms: []
   }
 
@@ -15,27 +15,24 @@ export default class BathroomList extends Component {
 
   componentDidMount = async () => {
     const bathrooms = await this.getBathroom()
-    this.setState({bathrooms})
+    this.setState({ bathrooms })
   }
 
   render() {
-    const bathroomList = this.state.bathrooms.map((bathroom, i)=> {
+    const bathroomList = this.state.bathrooms.map((bathroom, i) => {
       return (
-      <Link key={i} to={`/bathrooms/${bathroom.id}`}>
-        {bathroom.location_name}
-      </Link>
+        <div key={i} >
+          <Link to={`/bathrooms/${bathroom.id}`}>
+            {bathroom.location_name}
+          </Link>
+        </div>
       )
     })
     return (
-      <StyledList>
+
+      <div>
         {bathroomList}
-      </StyledList>
+      </div>
     )
   }
 }
-
-const StyledList = styled.div`
-display: flex;
-justify-content: space-around;
-flex-wrap: wrap;
-`
