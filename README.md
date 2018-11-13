@@ -32,7 +32,7 @@ This project was very challenging, because I kept getting tripped on simple bugs
 
 ---
 ## Shout Outs
-GA Staff - Daniel and Andrew, MOON!(my personal debugger and also helping me with setting up my API), Ivy (Great Rails set up instructions), Qing, and everyone at the back table that took time to talk me off the edge. And of course, Postman.
+GA Staff - Daniel and Andrew, MOON!(my personal debugger and also helping me with setting up my API), Ivy (Great Rails set up instructions), Qing, Taylor, and everyone at the back table that took time to talk me off the ledge. And of course, Postman.
 
 ---
 ## Work In Progress
