@@ -14,13 +14,10 @@ My project idea was inspired by a my several trips to New York City. Whenever I 
 
 ---
 ## The Process
-I started with setting up the backend using Rails with Postgresql. Then I built out the frontend with React. 
-
-
+I started with setting up the backend using Rails with Postgresql. I built out the frontend with React to test the seed data. Then I worked on bringing the the 3rd-party apis.
 
 ## Challenges
-
-
+This project was very challenging, because I kept getting tripped on simple bugs that delayed the whole project. By the time I decided I need to get my 3rd-Party api into my project - I ran into a host of more problems, so I ended up with a very unpolished, unfinished project. I learned that working with 3rd Party api's are going to create a lot of new challenges. 
 
 ---
 ## Technologies Used
@@ -39,4 +36,5 @@ GA Staff - Daniel and Andrew, MOON!(my personal debugger and also helping me wit
 
 ---
 ## Work In Progress
+I hope to get my 3rd party api's fully functional with my app. Future goals: be able to input my location so that the FourSquare api will bring nearby public restrooms into the app and Google Maps API will mark them on the map. 
 
