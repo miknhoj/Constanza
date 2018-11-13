@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-// import styled from 'styled-components'
+import styled from 'styled-components'
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+`
 
 export default class BathroomList extends Component {
   state = {
@@ -22,9 +27,9 @@ export default class BathroomList extends Component {
     const bathroomList = this.state.bathrooms.map((bathroom, i) => {
       return (
         <div key={i} >
-          <Link to={`/bathrooms/${bathroom.id}`}>
+          <StyledLink  to={`/bathrooms/${bathroom.id}`}>
             {bathroom.location_name}
-          </Link>
+          </StyledLink>
         </div>
       )
     })

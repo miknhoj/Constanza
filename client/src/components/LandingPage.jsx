@@ -10,8 +10,9 @@ import { Link } from 'react-router-dom'
 const StyledMap = styled.div`
   display: flex;
   justify-content: center;
+  flex-direction: column;
 `
-const StyledList = styled.div`
+const StyledContainer = styled.div`
   display: flex;
   justify-content: center;
   text-decoration: none;
@@ -72,16 +73,18 @@ export default class LandingPage extends Component {
     // console.log(process.env)
 
     return (
-      <StyledList >
+      <StyledContainer >
         <div>
           <StyledMap>
             <div id="map"></div>
           </StyledMap>
+          <div>
           <Link to={"/new"}><button>Add a New Bathroom</button></Link>
-          <FoursquareVenues />
           <BathroomList />
+          <FoursquareVenues />
+          </div>
         </div>
-      </StyledList>
+      </StyledContainer>
     )
   }
 }

@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+`
 
 export default class FoursquareVenues extends Component {
   state = {
@@ -22,9 +28,9 @@ export default class FoursquareVenues extends Component {
     const venues = this.state.venues.map((venue, i) => {
       return (
         <div key={i}>
-          <Link to={`/venues/${venue.id}`}>
+          <StyledLink to={`/venues/${venue.id}`}>
             {venue.name}
-          </Link>
+          </StyledLink>
         </div>
       )
     })
