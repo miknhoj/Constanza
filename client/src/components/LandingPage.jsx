@@ -1,18 +1,28 @@
 import React, { Component } from 'react'
-import Header from './shared_components/Header';
 import FoursquareVenues from './FoursquareVenues';
 import BathroomList from './bathroom_components/BathroomList';
 import styled from 'styled-components'
+import axios from 'axios';
+import { Link } from 'react-router-dom'
+
+require('dotenv').config()
 
 const StyledMap = styled.div`
   display: flex;
   justify-content: center;
 `
-
+const StyledList = styled.div`
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+`
 export default class LandingPage extends Component {
+  state = {
+    venues: []
+  }
 
   componentDidMount() {
-    this.renderMap()
+    this.getVenues()
   }
 
   renderMap = () => {
@@ -24,19 +34,53 @@ export default class LandingPage extends Component {
   initMap = () => {
     var map = new window.google.maps.Map(document.getElementById('map'), {
       center: { lat: 33.772866, lng: -84.366031 },
-      zoom: 8
-    });
+      zoom: 15
+    })
+
+    this.state.venues.map(myVenue => {
+      return new window.google.maps.Marker({
+        position: { lat: myVenue.venue.location.lat, lng: myVenue.venue.location.lng },
+        map: map,
+        title: myVenue.venue.name
+      })
+    })
+  }
+
+  getVenues = () => {
+    const client_id = process.env.REACT_APP_CLIENT_ID
+    const client_secret = process.env.REACT_APP_CLIENT_SECRET
+    const endPoint = `https://api.foursquare.com/v2/venues/explore?client_id=${client_id}&client_secret=${client_secret}&`
+    const parameters = {
+      query: "toilet",
+      near: "Atlanta,GA",
+      v: "20181112"
+
+    }
+    axios.get(endPoint + new URLSearchParams(parameters))
+      .then(response => {
+        console.log(response.data.response.groups[0].items)
+        this.setState({
+          venues: response.data.response.groups[0].items
+        }, this.renderMap())
+      })
+      .catch(error => {
+        console.log("ERROR!! " + error)
+      })
   }
 
   render() {
+
     return (
-      <div>
-        <StyledMap>
-          <div id="map"></div>
-        </StyledMap>
-        <FoursquareVenues />
-        <BathroomList />
-      </div>
+      <StyledList >
+        <div>
+          <StyledMap>
+            <div id="map"></div>
+          </StyledMap>
+          <Link to={"/new"}><button>Add a New Bathroom</button></Link>
+          <FoursquareVenues />
+          <BathroomList />
+        </div>
+      </StyledList>
     )
   }
 }

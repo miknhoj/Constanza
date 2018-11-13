@@ -1,7 +1,15 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
+
+const StyledContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`
+const StyledInput = styled.input`
+width: 50px;
+`
 
 export default class EditRating extends Component {
   state = {
@@ -23,7 +31,7 @@ export default class EditRating extends Component {
   getRating = async () => {
     const response = await axios.get(`/api/bathrooms/${this.props.match.params.bathroomId}/ratings/${this.props.match.params.ratingsId}`)
     console.log(response)
-    this.setState({ updatedRating: response.data, rating: {"form_data": response.data}})
+    this.setState({ updatedRating: response.data, rating: { "form_data": response.data } })
   }
 
   componentDidMount = async () => {
@@ -45,55 +53,56 @@ export default class EditRating extends Component {
 
   render() {
     if (this.state.redirect) {
-      return <Redirect to={`/bathrooms/${this.props.match.params.bathroomId}`}/>
+      return <Redirect to={`/bathrooms/${this.props.match.params.bathroomId}`} />
     }
 
     return (
       <div>
-        EDIT!
-        <form onSubmit={this.handleSubmit} >
-          <h1>New rating for {this.state.bathroom.location_name}</h1>
-          <p>Rating</p>
-          <StyledInput placeholder='1-5'
-            type="number" min="1" max="5"
-            name='rating'
-            value={this.state.updatedRating.rating}
-            onChange={this.handleChange}
-          />
-
-          <p>Cleaniness</p>
-          <StyledInput placeholder='1-5'
-            type="number" min="1" max="5"
-            name='cleaniness'
-            value={this.state.updatedRating.cleaniness}
-            onChange={this.handleChange}
-          />
-
-          <p>Privacy Level</p>
-          <StyledInput placeholder='1-5'
-            type="number" min="1" max="5"
-            name='privacy_level'
-            value={this.state.updatedRating.privacy_level}
-            onChange={this.handleChange}
-          />
-
-          <p>Comment</p>
-          <textarea placeholder='Comment'
-            name='comment'
-            value={this.state.updatedRating.comment}
-            onChange={this.handleChange}
-          />
-
+        <StyledContainer>
           <div>
-            <input type='submit' value='Update' />
-          </div>
+          <form onSubmit={this.handleSubmit} >
+            <h1>Edit rating for {this.state.bathroom.location_name}</h1>
+            <p>Rating</p>
+            <StyledInput placeholder='1-5'
+              type="number" min="1" max="5"
+              name='rating'
+              value={this.state.updatedRating.rating}
+              onChange={this.handleChange}
+            />
 
-        </form>
+            <p>Cleaniness</p>
+            <StyledInput placeholder='1-5'
+              type="number" min="1" max="5"
+              name='cleaniness'
+              value={this.state.updatedRating.cleaniness}
+              onChange={this.handleChange}
+            />
+
+            <p>Privacy Level</p>
+            <StyledInput placeholder='1-5'
+              type="number" min="1" max="5"
+              name='privacy_level'
+              value={this.state.updatedRating.privacy_level}
+              onChange={this.handleChange}
+            />
+
+            <p>Comment</p>
+            <textarea placeholder='Comment'
+              name='comment'
+              value={this.state.updatedRating.comment}
+              onChange={this.handleChange}
+            />
+
+            <div>
+              <input type='submit' value='Update' />
+              <Link to={`/bathrooms/${this.props.match.params.bathroomId}`}><button>Back</button></Link>
+            </div>
+
+          </form>
+          </div>
+        </StyledContainer>
       </div>
     )
   }
 }
 
-const StyledInput = styled.input`
-width: 50px;
-`
