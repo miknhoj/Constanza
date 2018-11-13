@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import axios from 'axios';
 import { Link } from 'react-router-dom'
 
-require('dotenv').config()
+// require('dotenv').config()
 
 const StyledMap = styled.div`
   display: flex;
@@ -69,6 +69,7 @@ export default class LandingPage extends Component {
   }
 
   render() {
+    console.log(process.env)
 
     return (
       <StyledList >
