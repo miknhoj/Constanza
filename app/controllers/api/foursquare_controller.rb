@@ -21,8 +21,8 @@ class Api::FoursquareController < ApplicationController
   end
 
   def create 
-    
     Bathroom.create!(url)
+    
   end
  
 end

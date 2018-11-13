@@ -31,7 +31,7 @@ class Api::BathroomsController < ApplicationController
 
 private
   def bathroom_params
-    params.require(:bathroom).permit(:street, :city, :state, :zip, :baby_changing, :toilets, :sinks)
+    params.require(:bathroom).permit(:location_name, :street, :city, :state, :zip, :baby_changing, :toilets, :sinks)
   end
 
 end

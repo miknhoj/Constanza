@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import axios from 'axios'
 
 export default class NewBathroom extends Component {
@@ -19,7 +19,7 @@ export default class NewBathroom extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault()
-    await axios.post(`/api/bathrooms`, { "form_data": this.state.bathroom })
+    await axios.post(`/api/bathrooms`, this.state.newBathroom)
     this.setState({
       bathroom: {
         location_name: '',
@@ -35,11 +35,16 @@ export default class NewBathroom extends Component {
   }
 
   handleChange = (e) => {
-    const newBathroom = { ...this.state.newBathroom}
+    const newBathroom = { ...this.state.newBathroom }
     newBathroom[e.target.name] = e.target.value
     this.setState({ newBathroom })
   }
+
   render() {
+    if (this.state.redirect) {
+      return <Redirect to={`/bathrooms/${this.props.match.params.bathroomId}`} />
+    }
+
     return (
       <div>
         < StyledContainer>
@@ -47,23 +52,23 @@ export default class NewBathroom extends Component {
             <h1>Add a New Bathroom</h1>
             <p>Location Name</p>
             <StyledInput placeholder='Location Name'
-              type="text"
-              name='Location Name'
+              type='text'
+              name='location_name'
               value={this.state.newBathroom.location_name}
               onChange={this.handleChange}
             />
 
             <p>Street Address</p>
             <StyledInput placeholder='Street Address'
-              type="text"
-              name='Street Address'
+              type='text'
+              name='street'
               value={this.state.newBathroom.street}
               onChange={this.handleChange}
             />
 
             <p>City</p>
             <StyledInput placeholder='City'
-              type="text"
+              type='text'
               name='city'
               value={this.state.newBathroom.city}
               onChange={this.handleChange}
@@ -77,9 +82,33 @@ export default class NewBathroom extends Component {
               onChange={this.handleChange}
             />
 
+            <p>Zip</p>
+            <StyledInput placeholder='Zip'
+              type="text"
+              name='zip'
+              value={this.state.newBathroom.zip}
+              onChange={this.handleChange}
+            />
+
+            <p>Baby Changing Station</p>
+            <StyledInput placeholder='Yes/No'
+              type="text"
+              name='baby_changing'
+              value={this.state.newBathroom.baby_changing}
+              onChange={this.handleChange}
+            />
+
+            <p>Number of Sinks</p>
+            <StyledInput placeholder='Number of Sinks'
+              type="number" min='0'
+              name='sinks'
+              value={this.state.newBathroom.sinks}
+              onChange={this.handleChange}
+            />
+
             <div>
-              <input type='submit' value='Rate' />
-              <Link to={`/bathrooms/${this.props.match.params.bathroomId}`}><button>Back</button></Link>
+              <input type='submit' value='Add New Bathroom' />
+              <Link to={`/`}><button>Back</button></Link>
             </div>
 
           </form>
@@ -95,6 +124,6 @@ const StyledContainer = styled.div`
 `
 
 const StyledInput = styled.input`
-width: 50px;
+
 `
 
