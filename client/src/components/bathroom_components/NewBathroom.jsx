@@ -13,25 +13,16 @@ export default class NewBathroom extends Component {
       zip: '',
       baby_changing: '',
       sinks: '',
-    },
-    redirect: false,
+    }
   }
 
   handleSubmit = async (e) => {
     e.preventDefault()
-    await axios.post(`/api/bathrooms`, this.state.newBathroom)
-    this.setState({
-      bathroom: {
-        location_name: '',
-        street: '',
-        city: '',
-        state: '',
-        zip: '',
-        baby_changing: '',
-        sinks: ''
-      }
-    })
-    this.setState({ redirect: true })
+    const response = await axios.post(`/api/bathrooms`, this.state.newBathroom)
+    console.log(response)
+    const bathroomId = response.data.id
+
+    await this.props.history.push(`/bathrooms/${bathroomId}`)
   }
 
   handleChange = (e) => {
@@ -41,9 +32,6 @@ export default class NewBathroom extends Component {
   }
 
   render() {
-    if (this.state.redirect) {
-      return <Redirect to={`/bathrooms/${this.state.bathroomId}`} />
-    }
 
     return (
       <div>
