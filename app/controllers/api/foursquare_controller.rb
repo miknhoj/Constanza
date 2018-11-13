@@ -20,5 +20,9 @@ class Api::FoursquareController < ApplicationController
     render json: @response
   end
 
+  def create 
+    
+    Bathroom.create!(url)
+  end
  
 end

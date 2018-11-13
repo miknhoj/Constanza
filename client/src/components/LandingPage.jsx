@@ -2,6 +2,12 @@ import React, { Component } from 'react'
 import Header from './shared_components/Header';
 import FoursquareVenues from './FoursquareVenues';
 import BathroomList from './bathroom_components/BathroomList';
+import styled from 'styled-components'
+
+const StyledMap = styled.div`
+  display: flex;
+  justify-content: center;
+`
 
 export default class LandingPage extends Component {
 
@@ -10,31 +16,30 @@ export default class LandingPage extends Component {
   }
 
   renderMap = () => {
-    loadScript("https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap")
+    const apikey = process.env.REACT_APP_GOOGLE_API_KEY
+    loadScript(`https://maps.googleapis.com/maps/api/js?key=${apikey}&callback=initMap`)
     window.initMap = this.initMap
   }
 
   initMap = () => {
-      var map = new window.google.maps.Map(document.getElementById('map'), {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 8
-      });
-    }
+    var map = new window.google.maps.Map(document.getElementById('map'), {
+      center: { lat: 33.772866, lng: -84.366031 },
+      zoom: 8
+    });
+  }
 
   render() {
     return (
       <div>
-        <Header/>
-        <div id="map"></div>
+        <StyledMap>
+          <div id="map"></div>
+        </StyledMap>
         <FoursquareVenues />
-        <BathroomList/>
+        <BathroomList />
       </div>
     )
-  } 
+  }
 }
-
-{/* <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"
-    async defer></script> */}
 
 function loadScript(url) {
   var index = window.document.getElementsByTagName("script")[0]
@@ -44,5 +49,4 @@ function loadScript(url) {
   script.defer = true
   index.parentNode.insertBefore(script, index)
 }
-
 

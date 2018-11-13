@@ -6,11 +6,15 @@ import RatingsList from './components/shared_components/RatingsList';
 import NewRatingPage from './components/NewRatingPage';
 import EditRating from './components/EditRating';
 import VenuePage from './components/VenuePage';
+import './App.css'
+import Header from './components/shared_components/Header';
 
 class App extends Component {
   render() {
     return (
       <Router>
+        <div>
+          <Header/>
         <Switch>
           <Route exact path='/' component={LandingPage} />
           <Route exact path='/bathrooms/:bathroomId' component={BathroomPage} />
@@ -19,6 +23,7 @@ class App extends Component {
           <Route exact path='/bathrooms/:bathroomId/ratings/new' component={NewRatingPage}/>
           <Route exact path='/bathrooms/:bathroomId/ratings/:ratingsId/edit' component={EditRating}/>
         </Switch>
+        </div>
       </Router>
     );
   }
