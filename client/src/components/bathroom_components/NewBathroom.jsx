@@ -42,7 +42,7 @@ export default class NewBathroom extends Component {
 
   render() {
     if (this.state.redirect) {
-      return <Redirect to={`/bathrooms/${this.props.match.params.bathroomId}`} />
+      return <Redirect to={`/bathrooms/${this.state.bathroomId}`} />
     }
 
     return (

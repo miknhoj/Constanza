@@ -69,7 +69,7 @@ export default class LandingPage extends Component {
   }
 
   render() {
-    console.log(process.env)
+    // console.log(process.env)
 
     return (
       <StyledList >
