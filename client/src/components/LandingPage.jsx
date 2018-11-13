@@ -16,8 +16,8 @@ export default class LandingPage extends Component {
   }
 
   renderMap = () => {
-    const apikey = process.env.REACT_APP_GOOGLE_API_KEY
-    loadScript(`https://maps.googleapis.com/maps/api/js?key=${apikey}&callback=initMap`)
+    const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY
+    loadScript(`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap`)
     window.initMap = this.initMap
   }
 
